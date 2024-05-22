@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Malawi-books-directory.props" />
+</Project>
