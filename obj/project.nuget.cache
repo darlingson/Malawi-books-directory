@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aog7aADeQmMvemDjbEQ465uqEV3Anc+rLNJ8N7l43iYY+ocSCOj6Y3n/TAqvyKmtutdzBa0IebSGMLXn0KGCBg==",
+  "dgSpecHash": "iE8VrNx+B7AQrO0/ZYdK82HcpAxh2K91359ouUZ8hIUYHaVIEHYFI24Q8my7PSEag5U/X2PVQmP0z4a/lEH8kQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\HP\\Documents\\personalProjects\\Malawi-books-directory\\Malawi-books-directory.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.2\\microsoft.entityframeworkcore.analyzers.7.0.2.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.2\\microsoft.entityframeworkcore.design.7.0.2.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.2\\microsoft.entityframeworkcore.relational.7.0.2.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.2\\microsoft.entityframeworkcore.tools.7.0.2.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
