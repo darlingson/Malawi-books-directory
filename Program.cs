@@ -1,15 +1,19 @@
 using Malawi_books_directory.Data;
 using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//  options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+//    new MySqlServerVersion(new Version(8, 0, 23))));
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 0, 23))));
-
+{
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+}
+    );
 
 var app = builder.Build();
 
