@@ -60,6 +60,46 @@ namespace Malawi_books_directory.Controllers
             var books = _context.Books.Include(b => b.Author).ToList();
             return View(books);
         }
+        public IActionResult Details(int id)
+        {
+            var book = _context.Books.Include(b => b.Author).FirstOrDefault(b => b.Id == id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
+        }
+
+        // Edit actions
+        public IActionResult Edit(int id)
+        {
+            var book = _context.Books.FirstOrDefault(b => b.Id == id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            ViewBag.Authors = _context.Authors.ToList();
+            return View(book);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, [Bind("Id,Title,AuthorId,Description,PublishedDate,Genre,ISBN,Publisher,Language,NumberOfPages,CoverImageUrl,Rating,Price,AvailabilityStatus,Tags")] Book book)
+        {
+            if (id != book.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _context.Update(book);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.Authors = _context.Authors.ToList();
+            return View(book);
+        }
     }
 }
 

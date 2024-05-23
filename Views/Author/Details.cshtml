@@ -1,0 +1,31 @@
+﻿@model Malawi_books_directory.Models.Author
+
+@{
+    ViewData["Title"] = "Author Details";
+}
+
+<h1>Author Details</h1>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Biography</dt>
+        <dd class="col-sm-10">@Model.Biography</dd>
+        <dt class="col-sm-2">Date of Birth</dt>
+        <dd class="col-sm-10">@Model.DateOfBirth?.ToShortDateString()</dd>
+        <dt class="col-sm-2">Nationality</dt>
+        <dd class="col-sm-10">@Model.Nationality</dd>
+        <dt class="col-sm-2">Photo</dt>
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.PhotoUrl))
+            {
+                <img src="@Model.PhotoUrl" alt="Author Photo" style="width:100px; height:100px;" />
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

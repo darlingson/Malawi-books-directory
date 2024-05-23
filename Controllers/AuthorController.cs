@@ -46,6 +46,44 @@ namespace Malawi_books_directory.Controllers
             var authors = _context.Authors.ToList();
             return View(authors);
         }
+        public IActionResult Details(int id)
+        {
+            var author = _context.Authors.FirstOrDefault(a => a.Id == id);
+            if (author == null)
+            {
+                return NotFound();
+            }
+            return View(author);
+        }
+
+        // Edit actions
+        public IActionResult Edit(int id)
+        {
+            var author = _context.Authors.FirstOrDefault(a => a.Id == id);
+            if (author == null)
+            {
+                return NotFound();
+            }
+            return View(author);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, [Bind("Id,Name,Biography,DateOfBirth,Nationality,PhotoUrl")] Author author)
+        {
+            if (id != author.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _context.Update(author);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(author);
+        }
     }
 }
 
