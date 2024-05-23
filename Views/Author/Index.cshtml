@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Malawi_books_directory.Models.Author>
+
+@{
+    ViewData["Title"] = "Authors";
+}
+
+<h1>Authors</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Author</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Biography</th>
+            <th>Date of Birth</th>
+            <th>Nationality</th>
+            <th>Photo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>
+                <td>@author.Name</td>
+                <td>@author.Biography</td>
+                <td>@author.DateOfBirth?.ToShortDateString()</td>
+                <td>@author.Nationality</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(author.PhotoUrl))
+                    {
+                        <img src="@author.PhotoUrl" alt="Author Photo" style="width:50px; height:50px;" />
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@author.Id" class="btn btn-sm btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@author.Id" class="btn btn-sm btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@author.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
