@@ -14,7 +14,7 @@ namespace Malawi_books_directory.Models
 
         [Required]
         public int AuthorId { get; set; }
-        public Author Author { get; set; }
+        public Author? Author { get; set; }
 
         [StringLength(500)]
         public string? Description { get; set; }

@@ -23,14 +23,24 @@ namespace Malawi_books_directory.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Book model)
         {
-            Console.WriteLine(model.Author);
+            Console.WriteLine("Received form data:");
+            Console.WriteLine($"Title: {model.Title}");
+            Console.WriteLine($"AuthorId: {model.AuthorId}");
+            Console.WriteLine($"Description: {model.Description}");
+            Console.WriteLine($"PublishedDate: {model.PublishedDate}");
+            Console.WriteLine($"Genre: {model.Genre}");
+            Console.WriteLine($"ISBN: {model.ISBN}");
+            Console.WriteLine($"Publisher: {model.Publisher}");
+            Console.WriteLine($"Language: {model.Language}");
+            Console.WriteLine($"NumberOfPages: {model.NumberOfPages}");
+            Console.WriteLine($"CoverImageUrl: {model.CoverImageUrl}");
+            Console.WriteLine($"Tags: {model.Tags}");
             if (ModelState.IsValid)
             {
                 var book = new Book
                 {
                     Title = model.Title,
-                    AuthorId = model.AuthorId,
-                    Author = model.Author,
+                    AuthorId = model.AuthorId, // Set AuthorId instead of Author
                     Description = model.Description,
                     PublishedDate = model.PublishedDate,
                     Genre = model.Genre,
@@ -55,7 +65,6 @@ namespace Malawi_books_directory.Controllers
             ViewBag.Authors = new SelectList(_context.Authors, "Id", "Name", model.AuthorId);
             return View(model);
         }
-
         // GET: Book/Index
         public IActionResult Index()
         {
