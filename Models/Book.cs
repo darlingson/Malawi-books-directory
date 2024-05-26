@@ -1,5 +1,5 @@
-﻿using Malawi_books_directory.Models;
-using Microsoft.AspNetCore.Mvc.ViewEngines;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Malawi_books_directory.Models
@@ -14,7 +14,7 @@ namespace Malawi_books_directory.Models
 
         [Required]
         public int AuthorId { get; set; }
-        public required Author Author { get; set; }
+        public Author Author { get; set; }
 
         [StringLength(500)]
         public string? Description { get; set; }
@@ -38,14 +38,6 @@ namespace Malawi_books_directory.Models
 
         [Url]
         public string? CoverImageUrl { get; set; }
-
-        public double Rating { get; set; }
-
-        [DataType(DataType.Currency)]
-        public decimal Price { get; set; }
-
-        [StringLength(20)]
-        public string? AvailabilityStatus { get; set; }
 
         [StringLength(200)]
         public string? Tags { get; set; }
