@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 namespace Malawi_books_directory.Controllers
 {
     public class BookController : Controller
@@ -95,7 +97,7 @@ namespace Malawi_books_directory.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,Title,AuthorId,Description,PublishedDate,Genre,ISBN,Publisher,Language,NumberOfPages,CoverImageUrl,Rating,Price,AvailabilityStatus,Tags")] Book book)
+        public IActionResult Edit(int id, [Bind("Id,Title,AuthorId,Description,PublishedDate,Genre,ISBN,Publisher,Language,NumberOfPages,CoverImageUrl,Tags")] Book book)
         {
             if (id != book.Id)
             {
@@ -110,6 +112,15 @@ namespace Malawi_books_directory.Controllers
             }
             ViewBag.Authors = _context.Authors.ToList();
             return View(book);
+        }
+        public async Task<IActionResult> RandomBooks()
+        {
+            var randomBooks = await _context.Books
+                .Include(b => b.Author)
+                .OrderBy(r => Guid.NewGuid())
+                .Take(10)
+                .ToListAsync();
+            return PartialView("_RandomBooksPartial", randomBooks);
         }
     }
 }
